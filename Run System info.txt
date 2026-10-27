@@ -1,0 +1,52 @@
+Run Backend on CMD
+
+Step 1:
+set "VCPKG_ROOT=C:\vcpkg"
+setx FOODHUB_ADMIN_CODE "AdminCode1234"
+
+Step 2:
+cmake -S backend -B backend/build -G "Visual Studio 18 2026" -A x64 -DCMAKE_TOOLCHAIN_FILE="C:/vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_MANIFEST_DIR="%CD%"
+
+Step 3:
+cmake --build backend/build --config Debug
+
+Step 4:
+cd backend
+build\Debug\foodhub.exe
+
+Run Frontend on CMD
+
+Step 1:
+cd frontend
+
+Step 2:
+npm run dev
+
+If you don't have system pack, you must install this pack....
+For Backend:
+
+1.CMake
+- Download CMake for windows: https://cmake.org/download/
+- Run on PowerShell: cmake --version
+
+2.vcpkg
+- Open PowerShell and Run this code step by step
+- cd C:\
+- git clone https://github.com/microsoft/vcpkg.git
+- cd C:\vcpkg
+- .\bootstrap-vcpkg.bat
+- [Environment]::SetEnvironmentVariable("VCPKG_ROOT", "C:\vcpkg", "User")
+$env:VCPKG_ROOT = "C:\vcpkg"
+- .\vcpkg.exe version
+
+3.Crow
+- Open PowerShell and Run this code step by step
+- cd C:\vcpkg
+- .\vcpkg.exe install crow:x64-windows
+- .\vcpkg.exe list
+
+4.OpenSSL
+- Open PowerShell and Run this code step by step
+- cd C:\vcpkg
+- .\vcpkg.exe install openssl:x64-windows
+- .\vcpkg.exe list
